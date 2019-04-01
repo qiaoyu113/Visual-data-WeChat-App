@@ -1,0 +1,5 @@
+<!--components/hint/hint.wxml-->
+<view class='hint' hidden='{{warning}}'>
+  <icon hidden="{{icon == ''}}" type='{{icon}}' size='{{size}}'></icon>
+  <view>{{warnText}}</view>
+</view>

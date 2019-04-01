@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "component-log": "/components/logs/logs"
+  },
+  "enablePullDownRefresh": false
+}

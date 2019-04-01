@@ -1,0 +1,103 @@
+<!--index.wxml-->
+<view class="home">
+  <!--搜索框-->
+  <view class="find">
+    <!-- <view class="logo">
+        <image src='../../lib/image/logo.png'></image>
+      </view> -->
+    <view class="findInp">
+      <i class='iconfont icon-sousuo'></i>
+      <input class="input" type='search' placeholder='搜索内容'  confirm-type='search' value='{{findText}}' bindconfirm='findBtn'/>
+    </view>
+  </view>
+  <!--导航栏-->
+  <view class='navigationOver'>
+    <view class="navigationBox">
+      <view class='navigation'>
+        <view class="navigationList {{index == nav?'navChecked':''}}" wx:for="{{navigationList}}" wx:key='key' data-index="{{index}}" data-id="{{item.id}}" bindtap="navBtn">
+          {{item.tagName}}
+          <view class='border'></view>
+        </view>
+      </view>
+    </view>
+    <!--白色渐变-->
+    <view class='opaction'></view>
+  </view>
+  <!--轮播图-->
+  <swiper class="swiper-box" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" wx:if="{{nav == 0}}">
+    <block wx:for="{{imgUrls}}" wx:key='key'>
+      <swiper-item bindtap='copyAdd'data-url='{{item.picLink}}'>
+        <!-- <navigator url="webView?url={{item.picLink}}" hover-class="navigator-hover"> -->
+        <navigator hover-class="navigator-hover">
+          <image src="{{imgUrl}}{{item.picUrl}}" class="slide-image" />
+          <view class='swiperText'>{{item.picTitle}}</view>
+        </navigator>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!--热门文章-->
+  <view class="LivingList" wx:if="{{nav == 0}}">
+    <view class="LivingTop">
+      <view class="Line"></view>
+      热门文章
+      <span bindtap='moreAr'>更多</span>
+    </view>
+    <view class="passOver">
+      <view class="passage">
+        <view class="passBox">
+          <view class="passageList" wx:for="{{passageList}}" wx:key='key' data-id="{{item.id}}" bindtap="artPage">
+            <view class='passageImage'>
+              <image src='{{imgUrl}}{{item.poster}}'></image>
+            </view>
+            <p>{{item.title}}</p>
+            <view class="passageBot">
+              <span>{{item.classification}}</span>
+              <span>
+                <i class='iconfont icon-yanjing'></i> {{item.readNum}}</span>
+              <span>
+                <i class='iconfont icon-zan2'></i>{{item.thumbsNum}}</span>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!--推荐专题-->
+  <!-- <view class="readIng"  wx:if="{{nav == 0}}">
+        <view class="LivingTop">
+            <view class="Line"></view>
+            推荐专题
+            <span>更多</span>
+        </view>
+        <view class="readOver">
+          <view class="acting">
+            <view class="actingBox">
+                <view class="actingList" wx:for="{{actList}}" data-id="{{item.id}}" bindtap="artPage">
+                  <image src='{{imgUrl}}{{item.poster}}'></image>
+                  <p>{{item.title}}</p>
+                </view>
+            </view>
+          </view>
+        </view>
+     </view> -->
+  <!--文章列表-->
+  <view class="read">
+    <view class="readBox" wx:for="{{read}}" wx:key='key' data-id="{{item.id}}" bindtap="artPage">
+      <view class="readList">
+        <view class="readLeft">
+          <image src='{{imgUrl}}{{item.thumbnails}}'></image>
+        </view>
+        <view class="readRight">
+          <view class="readName">{{item.title}}</view>
+          <view class="readDet">
+            <view class="readDetLeft">{{item.classification}}·{{item.createDate}}</view>
+            <view class="readDetTime">
+              <i class="iconfont icon-yanjing"></i>{{item.readNum}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--暂无更多-->
+    <view class="nomore" wx:if="{{noMore}}">暂无更多</view>
+  </view>
+</view>

@@ -1,0 +1,33 @@
+/* components/hint/hint.wxss */
+
+.hint {
+  width: 90%;
+  padding: 30rpx 20rpx;
+  text-align: center;
+  box-sizing: border-box;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #333;
+  opacity: 0.9;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 6px;
+  animation: warnAin 0.3s forwards;
+  z-index: 1000;
+}
+
+@keyframes warnAin {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}

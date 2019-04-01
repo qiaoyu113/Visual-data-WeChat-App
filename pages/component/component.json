@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "hint": "/components/hint/hint",
+    "popup": "/components/popup/popup"
+  }
+}

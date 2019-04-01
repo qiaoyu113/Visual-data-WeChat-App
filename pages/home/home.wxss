@@ -1,0 +1,483 @@
+@import "../../lib/css/iconfont.wxss";
+
+.iconfont {
+  float: left;
+}
+
+.home {
+  width: 100%;
+  height: auto;
+  background: #f9f9f9;
+}
+
+.find {
+  width: 100%;
+  height: 3.5rem;
+  background: #fff;
+}
+
+.find .logo {
+  width: 2.4rem;
+  height: 2.4rem;
+  float: left;
+  margin-top: 0.5rem;
+  margin-left: 1rem;
+}
+
+.find .logo image {
+  width: 100%;
+  height: 100%;
+}
+
+.find .findInp {
+  /* width:calc(100% - 5.4rem); */
+  width: calc(100% - 2.4rem);
+  height: 2.2rem;
+  background: #f9f9f9;
+  border-radius: 78px;
+  text-align: left;
+  padding: 0 1.4rem;
+  box-sizing: border-box;
+  margin-top: 0.6rem;
+  margin-left: 1rem;
+  float: left;
+}
+
+.find .findInp i {
+  display: block;
+  float: left;
+  height: 2.2rem;
+  line-height: 2.2rem;
+}
+
+.find .findInp .input {
+  width: 90%;
+  height: 100%;
+  background: #f9f9f9;
+  border-radius: 78px;
+  text-align: left;
+  padding: 0 0.5rem;
+  box-sizing: border-box;
+  font-size: 13px;
+  color: #999;
+}
+
+.find .findInp input::-webkit-input-placeholder {
+  color: #999;
+}
+
+.navigationOver {
+  width: 100%;
+  height: 2.4rem;
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+}
+
+.navigationBox {
+  width: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.opaction {
+  width: 2rem;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 100;
+  background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+  background-image: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+  background-image: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+  background-image: linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.navigation {
+  height: 3.4rem;
+  overflow-x: auto;
+  position: relative;
+  overflow-y: hidden;
+  width: max-content;
+  -webkit-overflow-scrolling: touch;
+}
+
+.navigationList {
+  padding: 0 1rem;
+  box-sizing: border-box;
+  height: 2rem;
+  line-height: 2rem;
+  float: left;
+  font-size: 16px;
+  color: #666;
+}
+
+.navChecked {
+  color: #20a0ff;
+  text-align: center;
+}
+
+.navChecked .border {
+  width: 1.4rem;
+  border: 1px solid #20a0ff;
+  margin: auto;
+  margin-top: -0.2rem;
+}
+
+.swiper-box {
+  width: 100%;
+  height: 12rem;
+}
+
+.swiper-box .wx-swiper-dots.wx-swiper-dots-horizontal {
+  margin-bottom: -10rpx;
+}
+
+.swiper-box .wx-swiper-dot {
+  width: 10rpx;
+  display: inline-flex;
+  height: 10rpx;
+  margin-left: 4rpx;
+  justify-content: space-between;
+}
+
+.swiper-box .wx-swiper-dot::before {
+  content: '';
+  flex-grow: 1;
+  background: #34363d;
+  border-radius: 8rpx;
+}
+
+.swiper-box .wx-swiper-dot-active::before {
+  background: #fff;
+}
+
+.swiper-box .swiperText {
+  width: 100%;
+  height: 2.4rem;
+  line-height: 1.4rem;
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.8) 98%, #FFFFFF 100%);
+  padding: 0.4rem 0.4rem 0 0.4rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: auto;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.slide-image {
+  width: 100%;
+}
+
+.LivingList {
+  width: 100%;
+  background: #fff;
+}
+
+.LivingTop {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+  box-sizing: border-box;
+}
+
+.Line {
+  margin-top: 0.35rem;
+  float: left;
+  display: inline-block;
+  width: 0.14rem;
+  height: 0.6rem;
+  margin-right: 0.3rem;
+  background-color: #20a0ff;
+}
+
+.LivingTop span {
+  float: right;
+  color: #666;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.passOver {
+  width: 100%;
+  height: 9rem;
+  overflow: hidden;
+}
+
+.passage {
+  padding-bottom: 0.26rem;
+  width: 100%;
+  overflow: auto;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+
+.passBox {
+  overflow-x: auto;
+  position: relative;
+  overflow-y: hidden;
+  padding: 0 0 0 0.8rem;
+  width: max-content;
+  -webkit-overflow-scrolling: touch;
+}
+
+.passageList {
+  float: left;
+  margin-right: 0.8rem;
+  width: 10.7rem;
+  height: 10rem;
+  display: inline-block;
+}
+
+.passageImage{
+  width: 100%;
+  height: 5.4rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.passageList image {
+  width:100%;
+  height:6.5rem;
+  position:absolute;
+  top:-0.4rem;
+}
+
+.passageList p {
+  width: 100%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+.passageList .passageBot {
+  width: 100%;
+  height: 1.4rem;
+  line-height: 1.4rem;
+}
+
+.passageList .passageBot span {
+  display: block;
+  font-size: 12px;
+  color: #999;
+  float: left;
+  margin-right: 1rem;
+}
+.icon-zan2{
+  font-size:12px;
+}
+
+.readOver {
+  width: 100%;
+  height: 11.2rem;
+  overflow: hidden;
+}
+
+.readIng {
+  width: 100%;
+  margin-top: 0.5rem;
+  background: #fff;
+}
+
+.acting {
+  padding-bottom: 0.26rem;
+  width: 100%;
+  overflow: auto;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+
+.actingBox {
+  overflow-x: auto;
+  position: relative;
+  overflow-y: hidden;
+  padding: 0 0 0 0.8rem;
+  width: max-content;
+  -webkit-overflow-scrolling: touch;
+}
+
+.actingList {
+  float: left;
+  margin-right: 0.8rem;
+  width: 18rem;
+  height: 11rem;
+  display: inline-block;
+}
+
+.actingList image {
+  width: 100%;
+  height: 9rem;
+}
+
+.actingList p {
+  width: 100%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+.activity {
+  width: 100%;
+  margin-top: 0.5rem;
+  background: #fff;
+}
+
+.activityBox {
+  width: 100%;
+  padding: 0 0.8rem;
+  box-sizing: border-box;
+}
+
+.activityBox .activityList {
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  padding: 0 0 0.6rem 0;
+  margin-bottom: 0.8rem;
+}
+
+.activityBox .activityList image {
+  width: 100%;
+  height: 10rem;
+}
+
+.activityBox .activityList .activityName {
+  width: 100%;
+  height: 1.4rem;
+  line-height: 1.4rem;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.activityBox .activityList .activityDetails {
+  width: 100%;
+  height: 1rem;
+  margin-top: 0.3rem;
+}
+
+.activityBox .activityList .activityDetails .detailsLeft {
+  width: 60%;
+  float: left;
+  color: #666;
+  font-size: 14px;
+}
+
+.activityBox .activityList .activityDetails .detailsRight {
+  float: right;
+  color: #333;
+  font-size: 14px;
+}
+
+.activityBox .activityList .activityDetails .detailsRight2 {
+  float: right;
+  color: #69f;
+  font-size: 14px;
+}
+
+.activityBox:last-child .activityList {
+  border: none;
+}
+
+.read {
+  width: 100%;
+  background: #fff;
+}
+
+.read .readBox {
+  width: 100%;
+  padding: 0 0.8rem;
+  box-sizing: border-box;
+}
+
+.read .readBox .readList {
+  width: 100%;
+  height: 5rem;
+  padding: 0.6rem 0;
+  box-shadow: border-box;
+  border-bottom: 1px solid #eee;
+}
+
+.read .readBox .readList .readLeft {
+  width: 6.9rem;
+  height: 4.6rem;
+  float: left;
+}
+
+.read .readBox .readList .readLeft image {
+  width: 100%;
+  height: 100%;
+}
+
+.read .readBox .readList .readRight {
+  width: calc(100% - 6.9rem);
+  height: 100%;
+  padding-left: 0.6rem;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
+}
+
+.read .readBox .readList .readRight .readName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+}
+
+.read .readBox .readList .readRight .readDet {
+  height: 1.4rem;
+  line-height: 1.4rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0.6rem;
+}
+
+.read .readBox .readList .readRight .readDet .readDetLeft {
+  color: #999;
+  font-size: 12px;
+  float: left;
+}
+
+.read .readBox .readList .readRight .readDet .readDetTime {
+  color: #999;
+  font-size: 12px;
+  float: right;
+  font-weight: 400;
+}
+
+.read .readBox .readList .readRight .readDet .readDetTime i {
+  margin-right: 0.2rem;
+}
+
+.nomore {
+  width: 100%;
+  height: 2rem;
+  line-height: 2rem;
+  color: #666;
+  font-size: 14px;
+  text-align: center;
+}
+

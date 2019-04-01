@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/myCenter/myCenter",
+    "pages/component/component",
+    "pages/index/index",
+    "pages/home/home"
+  ],
+  "components": {
+    "component-log": "components/logs/logs",
+    "hint": "components/hint/hint",
+    "popup": "components/popup/popup"
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#ffffff",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "color": "#333",
+    "selectedColor": "#20A0FF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "lib/image/icon11.png",
+        "iconPath": "lib/image/icon1.png",
+        "pagePath": "pages/home/home",
+        "text": "阅读"
+      },
+      {
+        "selectedIconPath": "lib/image/icon33.png",
+        "iconPath": "lib/image/icon3.png",
+        "pagePath": "pages/myCenter/myCenter",
+        "text": "我的"
+      }
+    ]
+  }
+}
