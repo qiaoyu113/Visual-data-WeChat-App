@@ -1,1 +1,71 @@
-/* pages/index/index.wxss */
+/* 基础样式, 勿动 */
+/* 侧边栏相关 */
+.section_gap {
+  position: relative;
+  overflow: hidden;
+  margin-top:500rpx;
+}
+
+.section_gap .fixed-list {
+  position: absolute;
+  left: 0;
+  z-index: 9999;
+  background-color: #fff;
+  border-right: 1px solid #eee;
+  box-shadow: 3px 0 3px #ccc;
+  padding-top: 1px;
+  display: none;
+}
+.section_gap .fixed-list.show{
+  display: block;
+}
+.fixedListContent {
+  height: 200px;
+}
+
+.section_gap .fixed-list .content {
+  border-bottom: 1px solid #eee;
+  padding-right: 10px;
+}
+/* 表格 */
+.table {
+  border-top: 1px solid #eee;
+  border-left: 1px solid #eee;
+  width: 750rpx;
+}
+
+#table-body {
+  height: 200px;
+}
+
+.thead {
+  box-shadow: 0 3px 3px #ccc;
+}
+
+.body {
+  display: table;
+}
+
+.tr {
+  border-bottom: 1px solid #eee;
+}
+
+.th {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.td {
+  white-space: word-break;
+}
+
+.td, .th {
+  border-right: 1px solid #eee;
+  display: table-cell;
+}
+
+.content {
+  box-sizing: border-box;
+  padding: 3px 5px;
+  white-space: word-break;
+}

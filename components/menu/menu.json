@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-popup": "../../miniprogram_npm/vant-weapp/popup/index",
+    "van-rate": "../../miniprogram_npm/vant-weapp/rate/index",
+    "van-sidebar": "../../miniprogram_npm/vant-weapp/sidebar/index",
+    "van-sidebar-item": "../../miniprogram_npm/vant-weapp/sidebar-item/index"
+  }
+}

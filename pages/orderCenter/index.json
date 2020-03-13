@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "orderData": "../orderData/orderData"
+  },
+  "enablePullDownRefresh": true
+}

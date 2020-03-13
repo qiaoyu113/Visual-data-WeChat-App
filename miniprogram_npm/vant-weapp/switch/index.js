@@ -1,50 +1,56 @@
 import { VantComponent } from '../common/component';
+import { BLUE, GRAY_DARK } from '../common/color';
 VantComponent({
-  field: true,
-  classes: ['node-class'],
-  props: {
-    checked: null,
-    loading: Boolean,
-    disabled: Boolean,
-    activeColor: String,
-    inactiveColor: String,
-    size: {
-      type: String,
-      value: '30px'
+    field: true,
+    classes: ['node-class'],
+    props: {
+        checked: {
+            type: null,
+            observer(value) {
+                const loadingColor = this.getLoadingColor(value);
+                this.setData({ value, loadingColor });
+            }
+        },
+        index: String,
+        loading: Boolean,
+        disabled: Boolean,
+        activeColor: String,
+        inactiveColor: String,
+        size: {
+            type: String,
+            value: '30px'
+        },
+        activeValue: {
+            type: null,
+            value: true
+        },
+        inactiveValue: {
+            type: null,
+            value: false
+        }
     },
-    activeValue: {
-      type: null,
-      value: true
+    created() {
+        const { checked: value } = this.data;
+        const loadingColor = this.getLoadingColor(value);
+        this.setData({ value, loadingColor });
     },
-    inactiveValue: {
-      type: null,
-      value: false
+    methods: {
+        getLoadingColor(checked) {
+            const { activeColor, inactiveColor } = this.data;
+            return checked ? activeColor || BLUE : inactiveColor || GRAY_DARK;
+        },
+        onClick() {
+          const { activeValue, inactiveValue, index } = this.data;
+            if (!this.data.disabled && !this.data.loading) {
+                const checked = this.data.checked === activeValue;
+                const value = checked ? inactiveValue : activeValue;
+                const newValue = {
+                  value: value,
+                  index: index
+                };
+                this.$emit('input', newValue);
+                this.$emit('change', newValue);
+            }
+        }
     }
-  },
-  watch: {
-    checked: function checked(value) {
-      this.set({
-        value: value
-      });
-    }
-  },
-  created: function created() {
-    this.set({
-      value: this.data.checked
-    });
-  },
-  methods: {
-    onClick: function onClick() {
-      var _this$data = this.data,
-          activeValue = _this$data.activeValue,
-          inactiveValue = _this$data.inactiveValue;
-
-      if (!this.data.disabled && !this.data.loading) {
-        var checked = this.data.checked === activeValue;
-        var value = checked ? inactiveValue : activeValue;
-        this.$emit('input', value);
-        this.$emit('change', value);
-      }
-    }
-  }
 });

@@ -1,0 +1,303 @@
+var formatDate = function (timestamp, option) {
+  var date = getDate(parseInt(timestamp));
+  var year = date.getFullYear()
+  var month = date.getMonth() + 1
+  var day = date.getDate()
+  var hour = function () {
+    if (date.getHours() < 10) {  //补‘0’
+      return '0' + date.getHours()
+    }
+    return date.getHours();
+  }
+  var minute = function () {
+    if (date.getMinutes() < 10) {
+      return '0' + date.getMinutes()
+    }
+    return date.getMinutes();
+  }
+  var second = function () {
+    if (date.getSeconds() < 10) {
+      return '0' + date.getSeconds()
+    }
+    return date.getSeconds();
+  }
+
+  if (option == 'notime') {  //不需要时间
+    return year + '-' + month + '-' + day;
+  }
+
+  return year + '-' + month + '-' + day + ' ' + hour() + ':' + minute() + ":" + second();
+}
+
+var tableNameFilter = function tableNameFilter(name) {
+  switch (name) {
+    //司机数据
+    case 'cityName': return '城市';
+    case 'city': return '城市';
+    case 'depositAdd': return '订金司机数';
+    case 'depositAll': return '累计订金司机数';
+    case 'depositDay': return '订金司机数';
+    case 'depositMonth': return '月总订金司机数';
+    case 'downDrivers': return '掉线司机数';
+    case 'driverDeliveryAll': return '累计交付司机数';
+    case 'driverDeliveryDay': return '交付司机数';
+    case 'driverDeliveryMonth': return '月总司机交付数';
+    case 'driverMonthIncome': return '上月司机人均运费';
+    case 'driversMonthBid': return '司机平均标书数';
+    case 'goToWorkAll': return '累计首岗司机数';
+    case 'goToWorkDay': return '首岗司机数';
+    case 'goToWorkMonth': return '月总首岗司机数';
+    case 'intentionAll': return '累计面试司机数';
+    case 'intentionMonth': return '月总面试司机数';
+    case 'intentionNew': return '面试司机数';
+    case 'signingAdd': return '成交司机数';
+    case 'signingAll': return '累计成交司机数';
+    case 'signingDay': return '成交司机数';
+    case 'signingMonth': return '月总成交司机数';
+    //线路标书数据
+    case 'canSellLineNum': return '可售线路数';
+    case 'addBidNum': return ' 标书数';
+    case 'addLineNum': return '线路数';
+    case 'bidAverageIncome': return '平均标书收入';
+    case 'canSupportLineNum': return '当前可用线路总数';
+    case 'downBidNum': return '下线标书数';
+    case 'downBidNumM': return '月总下线标书数';
+    case 'freeLineNum': return '闲置线路数';
+    case 'freeLineNumM': return '月总闲置线路数';
+    case 'monLineNumber': return '月总线路数';
+    case 'monTenderNumber': return '月总标书数';
+    case 'ranking': return '排名';
+    case 'startLineNum': return '可用线路数';
+    case 'totalBidNum': return '累计标书总数';
+    case 'totalLineNum': return '累计线路总数';
+    case 'canSellLineRate': return '可售线路数占比';
+    case 'totalLineRate': return '累计线路占比';
+    case 'lineRateOfMonth': return '月总线路数占比';
+    case 'lineTaskRate': return '线路数占比';
+    case 'downDriversMonth': return '本月掉线司机数';
+    case 'downDriversAll': return '累计掉线司机数';
+    case 'addStrongIntentionDriverNum': return '新增高意向司机数';
+    case 'addStrongIntentionDriverNumM': return '本月新增高意向司机数';
+    case 'totalStrongIntentionDriverNum': return '累计高意向司机数';
+    //城市
+    case 'c_110100': return '北京';
+    case 'c_310100': return '上海';
+    case 'c_320100': return '南京';
+    case 'c_330100': return '杭州';
+    case 'c_410100': return '郑州';
+    case 'c_420100': return '武汉';
+    case 'c_440100': return '广州';
+    case 'c_500100': return '重庆';
+    case 'c_510100': return '成都'; 
+    case 'total': return '总计';
+    case 'totalNumber': return '总计';
+    case 'statisticsItem': return '统计项';
+    case 'statisticsItemExten': return '统计项';
+    //渠道报表
+    case 'statisticsField_10': return '朋友圈';
+    case 'statisticsField_28': return '脉脉招聘';
+    case 'statisticsField_29': return '驾校推荐';
+    case 'statisticsField_31': return '搬家公司推荐';
+    case 'statisticsField_32': return '公众号文章推荐';
+    case 'statisticsField_33': return '租车公司信息';
+    case 'statisticsField_20': return '58同城';
+    case 'statisticsField_30': return '销售自拓';
+    case 'statisticsField_40': return '4S店推荐';
+    case 'statisticsField_50': return '线上广告';
+    case 'statisticsField_60': return '合伙人介绍';
+    case 'statisticsField_70': return 'BOSS直聘';
+    case 'statisticsField_1': return '小程序';
+    case 'statisticsField_2': return '转发';
+    case 'statisticsField_3': return '朋友圈扫一扫	';
+    case 'statisticsField_4': return '海报';
+    case 'statisticsField_5': return '易拉宝';
+    case 'statisticsField_6': return '传单';
+    case 'statisticsField_9': return '手册';
+    case 'statisticsField_11': return '短信';
+    case 'statisticsField_12': return '云鸟S端公告';
+    case 'statisticsField_13': return '微友圈';
+    case 'statisticsField_14': return '云鸟主管推荐';
+    case 'statisticsField_15': return '车贴广告';
+    case 'statisticsField_16': return '物流园地拓DM单页';
+    case 'statisticsField_17': return '云鸟司机介绍';
+    case 'statisticsField_18': return '区域代理';
+    case 'statisticsField_19': return '梧桐司机推荐';
+    case 'statisticsField_21': return '易企秀';
+    case 'statisticsField_22': return '智联招聘';
+    case 'statisticsField_23': return '雷鸟司机转化';
+    case 'statisticsField_24': return '二手车评估平台';
+    case 'statisticsField_25': return '5年以上车龄';
+    case 'statisticsField_26': return '物流园地拓小广告';
+    case 'statisticsField_27': return '斗米招聘';
+    case 'followNewClueNum': return '跟进新线索数';
+    case 'followClueCountNum': return '跟进线索次数';
+    case 'addWechatNum': return '添加微信数';
+    case 'addWechatRate': return '加微信占比';
+    case 'interviewsNum': return '面试数';
+    case 'highIntentionalNum': return '高意向数';
+    case 'transactionsNum': return '成交数';
+    // 订单数据
+    case 'addToBeConfirmedOrderNum': return '待总部确认订单数';
+    case 'addReachOrderNum': return '已成交订单数';
+    case 'addReachBuyCarOrderNum': return '已成交购车订单数';
+    case 'addReachRentCarOrderNum': return '已成交租车订单数';
+    case 'addReachTakeCarOrderNum': return '已成交带车订单数';
+    case 'addWorkOrderNum': return '订单上岗数';
+    case 'addWorkInOrderNum': return '订单上岗内线数';
+    case 'addWorkOutOrderNum': return '订单上岗外线数';
+    case 'addDeleteOrderNum': return '删除订单数';
+    case 'totalReachOrderNum': return '累计成交订单数';
+    case 'totalWorkOrderNum': return '累计上岗订单数';
+    case 'totalWorkInOrderNum': return '累计内线上岗数';
+    case 'totalWorkOutOrderNum': return '累计外线上岗数';
+    default: return name
+  }
+}
+
+var tableNameFilter2 = function tableNameFilter2(name) {
+  switch (name) {
+    //司机数据
+    case 'cityName': return '城市';
+    case 'city': return '城市';
+    case 'depositAdd': return '订金司机数';
+    case 'depositAll': return '累计订金司机数';
+    case 'depositDay': return '订金司机数';
+    case 'depositMonth': return '月总订金司机数';
+    case 'downDrivers': return '掉线司机数';
+    case 'driverDeliveryAll': return '累计交付司机数';
+    case 'driverDeliveryDay': return '交付司机数';
+    case 'driverDeliveryMonth': return '月总司机交付数';
+    case 'driverMonthIncome': return '上月司机人均运费';
+    case 'driversMonthBid': return '司机平均标书数';
+    case 'goToWorkAll': return '累计首岗司机数';
+    case 'goToWorkDay': return '上岗数';
+    case 'goToWorkMonth': return '月总上岗数';
+    case 'intentionAll': return '累计面试司机数';
+    case 'intentionMonth': return '月总面试数';
+    case 'intentionNew': return '面试数';
+    case 'signingAdd': return '成交数';
+    case 'signingAll': return '累计成交司机数';
+    case 'signingDay': return '成交司机数';
+    case 'signingMonth': return '月总成交数';
+    //线路标书数据
+    case 'canSellLineNum': return '可售线路数';
+    case 'addBidNum': return ' 标书数';
+    case 'addLineNum': return '线路数';
+    case 'bidAverageIncome': return '平均标书收入';
+    case 'canSupportLineNum': return '当前可用线路总数';
+    case 'downBidNum': return '下线标书数';
+    case 'downBidNumM': return '月总下线标书数';
+    case 'freeLineNum': return '闲置线路数';
+    case 'freeLineNumM': return '月总闲置线路数';
+    case 'monLineNumber': return '月总线路数';
+    case 'monTenderNumber': return '月总标书数';
+    case 'ranking': return '排名';
+    case 'startLineNum': return '可用线路数';
+    case 'totalBidNum': return '累计标书总数';
+    case 'totalLineNum': return '累计线路总数';
+    case 'canSellLineRate': return '可售线路数占比';
+    case 'totalLineRate': return '累计线路占比';
+    case 'lineRateOfMonth': return '月总线路数占比';
+    case 'lineTaskRate': return '线路数占比';
+    case 'downDriversMonth': return '本月掉线司机数';
+    case 'downDriversAll': return '累计掉线司机数';
+    case 'addStrongIntentionDriverNum': return '高意向数';
+    case 'addStrongIntentionDriverNumM': return '月总高意向数';
+    case 'totalStrongIntentionDriverNum': return '累计高意向司机数';
+    //城市
+    case 'c_110100': return '北京';
+    case 'c_310100': return '上海';
+    case 'c_320100': return '南京';
+    case 'c_330100': return '杭州';
+    case 'c_410100': return '郑州';
+    case 'c_420100': return '武汉';
+    case 'c_440100': return '广州';
+    case 'c_500100': return '重庆';
+    case 'c_510100': return '成都';
+    case 'total': return '总计';
+    case 'totalNumber': return '总计';
+    case 'statisticsItem': return '统计项';
+    case 'statisticsItemExten': return '统计项';
+    // 线路标书
+    case 'normalStrongNum': return '新增/高意向客户';
+    case 'normalStrongNumMon': return '月新增/高意向新增客户';
+    case 'lineExcellentNum': return '新增数优质线数';
+    case 'lineExcellentMon': return '月新增数/优质线数';
+    case 'canSellLineExcellentNum': return '可售/可售优质线路';
+    case 'downBidNum': return '下线标书数';
+    case 'invalidLineNum': return '线路失效数';
+    case 'stopLineNum': return '线路停用数';
+    //渠道报表
+    case 'statisticsField_10': return '朋友圈';
+    case 'statisticsField_28': return '脉脉招聘';
+    case 'statisticsField_29': return '驾校推荐';
+    case 'statisticsField_31': return '搬家公司推荐';
+    case 'statisticsField_32': return '公众号文章推荐';
+    case 'statisticsField_33': return '租车公司信息';
+    case 'statisticsField_20': return '58同城';
+    case 'statisticsField_30': return '销售自拓';
+    case 'statisticsField_40': return '4S店推荐';
+    case 'statisticsField_50': return '线上广告';
+    case 'statisticsField_60': return '合伙人介绍';
+    case 'statisticsField_70': return 'BOSS直聘';
+    case 'statisticsField_1': return '小程序';
+    case 'statisticsField_2': return '转发';
+    case 'statisticsField_3': return '朋友圈扫一扫	';
+    case 'statisticsField_4': return '海报';
+    case 'statisticsField_5': return '易拉宝';
+    case 'statisticsField_6': return '传单';
+    case 'statisticsField_9': return '手册';
+    case 'statisticsField_11': return '短信';
+    case 'statisticsField_12': return '云鸟S端公告';
+    case 'statisticsField_13': return '微友圈';
+    case 'statisticsField_14': return '云鸟主管推荐';
+    case 'statisticsField_15': return '车贴广告';
+    case 'statisticsField_16': return '物流园地拓DM单页';
+    case 'statisticsField_17': return '云鸟司机介绍';
+    case 'statisticsField_18': return '区域代理';
+    case 'statisticsField_19': return '梧桐司机推荐';
+    case 'statisticsField_21': return '易企秀';
+    case 'statisticsField_22': return '智联招聘';
+    case 'statisticsField_23': return '雷鸟司机转化';
+    case 'statisticsField_24': return '二手车评估平台';
+    case 'statisticsField_25': return '5年以上车龄';
+    case 'statisticsField_26': return '物流园地拓小广告';
+    case 'statisticsField_27': return '斗米招聘';
+    case 'followNewClueNum': return '跟进新线索数';
+    case 'followClueCountNum': return '跟进线索次数';
+    case 'addWechatNum': return '添加微信数';
+    case 'addWechatRate': return '加微信占比';
+    case 'interviewsNum': return '面试数';
+    case 'highIntentionalNum': return '高意向数';
+    case 'transactionsNum': return '成交数';
+    // 订单数据
+    case 'addToBeConfirmedOrderNum': return '待总部确认订单数';
+    case 'addReachOrderNum': return '已成交订单数';
+    case 'addReachBuyCarOrderNum': return '已成交购车订单数';
+    case 'addReachRentCarOrderNum': return '已成交租车订单数';
+    case 'addReachTakeCarOrderNum': return '已成交带车订单数';
+    case 'addWorkOrderNum': return '订单上岗数';
+    case 'addWorkInOrderNum': return '订单上岗内线数';
+    case 'addWorkOutOrderNum': return '订单上岗外线数';
+    case 'addDeleteOrderNum': return '删除订单数';
+    case 'totalReachOrderNum': return '累计成交订单数';
+    case 'totalWorkOrderNum': return '累计上岗订单数';
+    case 'totalWorkInOrderNum': return '累计内线上岗数';
+    case 'totalWorkOutOrderNum': return '累计外线上岗数';
+    default: return name
+  }
+}
+
+var nullFilter = function (val) {
+  if(!val){
+    val = 0
+  }
+  return val
+}
+
+module.exports = {
+  formatDate: formatDate,
+  tableNameFilter: tableNameFilter,
+  tableNameFilter2: tableNameFilter2,
+  nullFilter: nullFilter
+};

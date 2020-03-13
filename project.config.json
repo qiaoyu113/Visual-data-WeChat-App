@@ -9,9 +9,11 @@
 		"nodeModules": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.1",
-	"appid": "wx38409fa0669f5585",
+	"libVersion": "2.6.4",
+	"appid": "wx675e74ebb2ff15f4",
 	"projectname": "%E6%A2%A7%E6%A1%90%E8%BD%A6%E6%9C%8D",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,

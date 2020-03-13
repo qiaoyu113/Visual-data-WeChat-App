@@ -1,3 +1,4 @@
+//时间戳
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -18,7 +19,7 @@ const formatNumber = n => {
 const picker = val => {
   let arr = [];
   val.forEach(function (item) {
-    arr.push(item.itemValue);
+    arr.push(item.code);
   })
   return arr;
 }

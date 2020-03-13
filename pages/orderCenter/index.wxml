@@ -1,0 +1,27 @@
+<view class='index'>
+  <cover-view scroll-x class="bg-white nav fixed z-index" wx-if="{{showCover}}">
+    <cover-view class='flex text-center'>
+      <cover-view class="cu-item flex-sub {{index==TabCur?'text-blue ':''}}" wx:for="{{tabList}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+        {{item}}
+        <cover-view wx:if='{{index==TabCur}}' class='narLine'></cover-view>
+      </cover-view>
+    </cover-view>
+    <cover-view class='narBoxBottom'></cover-view>
+  </cover-view>
+  <view scroll-x class="bg-white nav fixed z-index overhidden" wx-if="{{!showCover}}">
+    <view class='flex text-center'>
+      <view class="cu-item flex-sub {{index==TabCur?'text-blue ':''}}" wx:for="{{tabList}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+        {{item}}
+        <view wx:if='{{index==TabCur}}' class='narLine'></view>
+      </view>
+    </view>
+    <view class='narBoxBottom'></view>
+  </view>
+  <view class='login'>
+    <van-loading />
+  </view>
+  <view wx:if='{{TabCur==0}}'>
+    <orderData bind:myevent="onGetShow" actIndex='{{actIndex}}' id='orderData'></orderData>
+  </view>
+	<menu></menu>
+</view>

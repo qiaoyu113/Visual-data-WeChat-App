@@ -1,0 +1,224 @@
+<!--pages/dataCenter/tenderData/tenderData.wxml-->
+<view class='driverData' id='driverData'>
+  <view class="cu-bar bg-white">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> {{title}}
+    </view>
+    <view class='action'>
+      <view class="cu-bar search bg-white">
+        <view class='action fontSize marginRight btnClass' bindtap='selectTime'>
+          <text>{{timeChange}}</text>
+          <van-dialog id="van-dialog"></van-dialog>
+          <text class="icon-all marginLeft"></text>
+        </view>
+        <!-- <view class='action fontSize'>
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{picketArray}}">
+            <view class="picker">
+              {{picketArray[index]}}
+              <text class="icon-triangledownfill marginLeft"></text>
+            </view>
+          </picker>
+        </view> -->
+      </view>
+    </view>
+  </view>
+  <view class="cu-bar bg-white solid-top text-center">
+    <picker class='citySelect' bindchange="bindPickerChangeChannel" value="{{index3}}" range="{{channelArray}}">
+      <view>
+        <text class='icon-title text-blue'></text> {{channelArray[index3]}}
+        <text class="icon-triangledownfill marginLeft"></text>
+      </view>
+    </picker>
+    <picker class='citySelect' bindchange="bindPickerChangeCity" value="{{index2}}" range="{{cityArray}}">
+      <view>
+        <text class='icon-title text-blue'></text> {{cityArray[index2]}}
+        <text class="icon-triangledownfill marginLeft"></text>
+      </view>
+    </picker>
+    <picker class='citySelect' bindchange="bindPickerChangeDriver" value="{{index4}}" range="{{driverArray}}">
+      <view>
+        <text class='icon-title text-blue'></text> {{driverArray[index4]}}
+        <text class="icon-triangledownfill marginLeft"></text>
+      </view>
+    </picker>
+  </view>
+  <!--时间塞选-->
+  <van-popup show="{{ show }}" position="top" overlay="{{ true }}" safe-area-inset-top='{{ true }}' bind:close="onClose">
+    <cover-view class='selectTimeBox'>
+      <!-- <cover-view class='monthBtn' bindtap='yesterday'>日报</cover-view> -->
+      <cover-view class='monthBtn' bindtap='allday'>总计</cover-view>
+      <picker mode="date" fields="month" end="{{ minDate }}" bindchange="onMonth">
+        <cover-view class='monthBtn'>月报</cover-view>
+      </picker>
+      <cover-view class='monthBtn' bindtap='lastWeek'>本周</cover-view>
+      <!-- <picker mode="date" end="{{ minWeek }}" bindchange="onWeek">
+        <cover-view class='monthBtn'>按周（选择开始日期）</cover-view>
+      </picker> -->
+    </cover-view>
+  </van-popup>
+  <!-- 司机画像2.0 -->
+  <view class='driverBox'>
+    <image src='../../../lib/image/driverImg.jpg' mode='widthFix'></image>
+    <view class='driverBoxMin'>
+      <view class='driverBoxList2'>
+        <view class='item'>年龄：{{driverDetail.age}}</view>
+        <view class='item'>驾龄：{{driverDetail.drivingAge}}月</view>
+        <view class='item'>子女数：{{driverDetail.childrenNum}}</view>
+      </view>
+      <view class='driverBoxList2'>
+        <view class='item'>平均月收入：{{driverDetail.monthlyIncome}}元</view>
+        <view class='item'>期望收入：{{driverDetail.expectIncome}}</view>
+        <view class='item'>物流从业经验：{{driverDetail.workExperience}}月</view>
+        <view class='item'>居住多久：{{driverDetail.liveDuration}}月</view>
+        <view class='item'>首付金额：{{driverDetail.downPayment}}</view>
+        <view class='item'>承担较重搬运占比：{{driverDetail.heavyHandlingRate}}</view>
+        <view class='item'>能应对长期业务操作：{{driverDetail.patientRate}}</view>
+        <view class='item'>能接受较高难度操作：{{driverDetail.acceptHighDifficultyRate}}</view>
+        <view class='item'>A级贫困县占比：{{driverDetail.apovertyCountyRate}}</view>
+        <view class='item'>B级贫困县占比：{{driverDetail.bpovertyCountyRate}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!--来源渠道分析-->
+  <view class="cu-bar bg-white solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 来源渠道
+    </view>
+  </view>
+
+  <view class='bar_charts_box'>
+    <view class="container marginTop">
+      <ec-canvas class='mychart-dom-panel' id="mychart-dom-panel" canvas-id="mychart-panel" ec="{{ ec }}"></ec-canvas>
+      <view wx:if='{{echartData3}}' class='noData'>暂无数据</view>
+    </view>
+  </view>
+
+  <!--子女数分析-->
+  <view class="cu-bar bg-white solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 子女数占比
+    </view>
+  </view>
+
+  <view class='bar_charts_box'>
+    <view class="container marginTop">
+      <ec-canvas class='mychart-dom-pie' id="mychart-dom-pie1" canvas-id="mychart-pie1" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+      <view wx:if='{{echartData4}}' class='noData'>暂无数据</view>
+    </view>
+  </view>
+
+  <!--物流从业经验分析-->
+  <view class="cu-bar bg-white solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 物流从业经验
+    </view>
+  </view>
+
+  <view class='bar_charts_box'>
+    <view class="container marginTop">
+      <ec-canvas class='mychart-dom-pie' id="mychart-dom-pie2" canvas-id="mychart-pie2" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+      <view wx:if='{{echartData5}}' class='noData'>暂无数据</view>
+    </view>
+  </view>
+
+  <!--驾龄占比分析-->
+  <view class="cu-bar bg-white solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 驾龄占比
+    </view>
+  </view>
+
+  <view class='bar_charts_box'>
+    <view class="container marginTop">
+      <ec-canvas class='mychart-dom-pie' id="mychart-dom-pie3" canvas-id="mychart-pie3" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+      <view wx:if='{{echartData6}}' class='noData'>暂无数据</view>
+    </view>
+  </view>
+
+  <!--居住时长占比分析-->
+  <view class="cu-bar bg-white solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 居住时长占比
+    </view>
+  </view>
+
+  <view class='bar_charts_box'>
+    <view class="container marginTop">
+      <ec-canvas class='mychart-dom-pie' id="mychart-dom-pie4" canvas-id="mychart-pie4" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+      <view wx:if='{{echartData7}}' class='noData'>暂无数据</view>
+    </view>
+  </view>
+
+  <!--月均毛收入占比分析-->
+  <view class="cu-bar bg-white solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 月均毛收入占比
+    </view>
+  </view>
+
+  <view class='bar_charts_box'>
+    <view class="container marginTop">
+      <ec-canvas class='mychart-dom-pie' id="mychart-dom-pie5" canvas-id="mychart-pie5" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+      <view wx:if='{{echartData8}}' class='noData'>暂无数据</view>
+    </view>
+  </view>
+
+  <!--驾照类型占比分析-->
+  <view class="cu-bar bg-white solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 驾照类型占比
+    </view>
+  </view>
+
+  <view class='bar_charts_box'>
+    <view class="container marginTop">
+      <ec-canvas class='mychart-dom-pie' id="mychart-dom-pie6" canvas-id="mychart-pie6" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+      <view wx:if='{{echartData9}}' class='noData'>暂无数据</view>
+    </view>
+  </view>
+
+  <!--生命周期数据指标table-->
+  <!-- <c-table id='c-table' tableData='{{ tableDatas }}'></c-table> -->
+
+  <!-- <view class="cu-bar bg-white solid-bottom solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 司机日报
+    </view>
+  </view> -->
+
+  <!--关键数据指标table-->
+  <!-- <c-table id='c-table2' tableData='{{ tableDatas2 }}'></c-table> -->
+
+  <!--全部城市塞选-->
+  <!-- <view class="cu-bar bg-white solid-top text-center">
+    <picker class='citySelect' bindchange="bindPickerChangeCity" value="{{index2}}" range="{{cityArray}}">
+      <view>
+        <text class='icon-title text-blue'></text> {{cityArray[index2]}}
+        <text class="icon-triangledownfill marginLeft"></text>
+      </view>
+    </picker>
+  </view> -->
+
+  <!-- <view class="cu-bar bg-white solid-bottom solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 意向司机来源渠道占比
+    </view>
+  </view> -->
+  <!--线路分饼图-->
+  <!-- <view class="container marginTop padding-top50">
+    <ec-canvas class='mychart-dom-pie' id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+  </view>
+
+  <view class="cu-bar bg-white solid-bottom solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 成交转化率分析
+    </view>
+  </view> -->
+  <!--货物类型占比-->
+  <!-- <view class='bar_charts_box'>
+    <view class="container marginTop">
+      <ec-canvas class='mychart-dom-bar' id="mychart-dom-funnel" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+    </view>
+  </view> -->
+</view>

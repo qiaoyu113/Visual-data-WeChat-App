@@ -1,0 +1,92 @@
+<!--pages/dataCenter/tenderData/tenderData.wxml-->
+<view class='orderData' id='orderData'>
+  <view class="cu-bar bg-white">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> {{timeArray[index1]}}
+    </view>
+    <view class='action'>
+      <view class="cu-bar search bg-white">
+        <view class='action fontSize marginRight btnClass' bindtap='selectTime'>
+          <text>{{timeChange}}</text>
+          <van-dialog id="van-dialog"></van-dialog>
+          <text class="icon-all marginLeft"></text>
+        </view>
+        <!-- <view class='action fontSize'>
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{picketArray}}">
+            <view class="picker">
+              {{picketArray[index]}}
+              <text class="icon-triangledownfill marginLeft"></text>
+            </view>
+          </picker>
+        </view> -->
+      </view>
+    </view>
+  </view>
+  <!--时间塞选-->
+  <van-popup show="{{ show }}" position="top" overlay="{{ true }}" safe-area-inset-top='{{ true }}' bind:close="onClose">
+    <cover-view class='selectTimeBox'>
+      <view class='selectTimeList' wx:for='{{array1}}' wx:key='{{item.code}}'>
+        <cover-view class='monthBtn' bindtap='bindPickerChangeTime' data-id="{{item.codeVal}}">{{item.code}}</cover-view>
+      </view>
+    </cover-view>
+  </van-popup>
+  <!--生命周期数据指标table-->
+  <c-table2 id='c-table' tableData='{{ tableDatas }}'></c-table2>
+
+  <view class="cu-bar bg-white solid-top text-center">
+    <picker class='citySelect' bindchange="bindPickerChangeCity" value="{{index3}}" range="{{cityArray}}">
+      <view>
+        <text class='icon-title text-blue'></text> {{cityArray[index3]}}
+        <text class="icon-triangledownfill marginLeft"></text>
+      </view>
+    </picker>
+  </view>
+
+  <!--成交合作模式占比-->
+  <view class="cu-bar bg-white solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 成交合作模式占比
+    </view>
+  </view>
+
+  <view class='bar_charts_box'>
+    <view class="container marginTop">
+      <ec-canvas class='mychart-dom-pie' id="mychart-dom-pie1" canvas-id="mychart-pie1" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+      <view wx:if='{{echartData1}}' class='noData'>暂无数据</view>
+    </view>
+  </view>
+
+  <!--周上岗占比-->
+  <view class="cu-bar bg-white solid-top" wx:if='{{index1 == 2 || index1 == 4}}'>
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 周上岗占比
+    </view>
+  </view>
+
+  <view class="cu-bar bg-white solid-top" wx:if='{{index1 == 1 || index1 == 3}}'>
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 月上岗占比
+    </view>
+  </view>
+
+  <view class='bar_charts_box' hidden='{{index1 == 0}}'>
+    <view class="container marginTop">
+      <ec-canvas class='mychart-dom-pie' id="mychart-dom-pie2" canvas-id="mychart-pie2" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+      <view wx:if='{{echartData2}}' class='noData'>暂无数据</view>
+    </view>
+  </view>
+
+  <!--累计上岗占比-->
+  <view class="cu-bar bg-white solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 累计上岗占比
+    </view>
+  </view>
+
+  <view class='bar_charts_box'>
+    <view class="container marginTop">
+      <ec-canvas class='mychart-dom-pie' id="mychart-dom-pie4" canvas-id="mychart-pie4" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+      <view wx:if='{{echartData4}}' class='noData'>暂无数据</view>
+    </view>
+  </view>
+</view>

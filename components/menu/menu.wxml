@@ -1,0 +1,17 @@
+<!--主菜单-->
+<wxs src="../../miniprogram_npm/vant-weapp/wxs/utils.wxs" module="utils" />
+<cover-view class='menuClass' bindtap='toggle' data-class='shake' bindtap="openMenu">
+  ≡
+</cover-view>
+<!-- <van-popup show="{{ show }}" position="left" custom-style="height: 100%;width:40%;" z-index='10000' bind:close="onClose">
+	<van-sidebar active-key="{{ activeKey }}" bind:change="onChangeMenu" custom-class='sidebarClass'>
+		<van-sidebar-item wx:for='{{menuList}}' wx:key="id" title="{{item.text}}" />
+	</van-sidebar>
+</van-popup> -->
+<cover-view wx:if="{{ show }}" position="left" class="sidebar">
+  <cover-view wx:for='{{menuList}}' wx:key="id" class="{{ activeKey == index ? 'sidebarList_check' : '' }} sidebarList van-left-enter van-left-enter-active van-popup van-popup--left van-popup--safe"  bindtap="onChangeMenu" data-pagePath="{{item.pagePath}}" data-i='{{index}}'>
+    <cover-view class="borderLeft {{ activeKey == index ? 'borderLeft' : 'borderLeftNo'}}"></cover-view>
+    {{ item.text }}
+  </cover-view>
+</cover-view>
+<cover-view class="van-overlay" wx:if="{{ show }}" bindtap="onClose"></cover-view>

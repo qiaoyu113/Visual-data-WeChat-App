@@ -1,0 +1,150 @@
+
+<!--pages/dataCenter/tenderData/tenderData.wxml-->
+<view class='tenderData' id='tenderData'>
+  <scroll-view scroll-x class="bg-white nav text-center">
+    <view class="cu-item {{index==TabCur?'text-blue cur':''}}" wx:for="{{TabList}}" wx:key = "id" bindtap='tabSelect' data-id="{{index}}">
+      {{item}}
+    </view>
+  </scroll-view>
+  <!--数据概览1-->
+  <view wx:if='{{TabCur == 0}}'>
+    <view class="cu-bar bg-white solid-top">
+      <view class='action text-black'>
+        <text class='icon-title text-cyan'></text> {{title}}
+      </view>
+      <view class='action'>
+        <view class="cu-bar search bg-white">
+          <view class='action fontSize marginRight btnClass' bindtap='selectTime'>
+            <text>{{timeChange}}</text>
+            <van-dialog id="van-dialog"></van-dialog>
+            <text class="icon-all marginLeft"></text>
+          </view>
+          <!-- <view class='action fontSize'>
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{picketArray}}">
+            <view class="picker">
+              {{picketArray[index]}}
+              <text class="icon-triangledownfill marginLeft"></text>
+            </view>
+          </picker>
+        </view> -->
+        </view>
+      </view>
+    </view>
+    <!--时间塞选-->
+    <van-popup show="{{ show }}" position="top" overlay="{{ true }}" safe-area-inset-top='{{ true }}' bind:close="onClose">
+      <cover-view class='selectTimeBox'>
+        <cover-view class='monthBtn' bindtap='yesterday'>日报</cover-view>
+        <picker mode="date" fields="month" end="{{ minDate }}" bindchange="onMonth">
+          <cover-view class='monthBtn'>月报</cover-view>
+        </picker>
+        <cover-view class='monthBtn' bindtap='lastWeek'>上周</cover-view>
+        <!-- <picker mode="date" end="{{ minWeek }}" bindchange="onWeek">
+        <cover-view class='monthBtn'>按周（选择开始日期）</cover-view>
+      </picker> -->
+      </cover-view>
+    </van-popup>
+    <!--生命周期数据指标table-->
+    <c-table2 id='c-table' tableData='{{ tableDatas }}'></c-table2>
+
+    <!--累计数据趋势（折线图）-->
+    <view class="cu-bar bg-white" wx:if='{{dateType != 1}}'>
+      <view class='action text-black'>
+        <text class='icon-title text-cyan'></text> 累计数据趋势
+      </view>
+    </view>
+    <view class="cu-bar bg-white text-center" wx:if='{{dateType != 1}}'>
+      <picker class='citySelect' bindchange="bindPickerChangeCity" value="{{index2}}" range="{{cityArray}}">
+        <view>
+          <text class='icon-title text-blue'></text> {{cityArray[index2]}}
+          <text class="icon-triangledownfill marginLeft"></text>
+        </view>
+      </picker>
+    </view>
+    <view class='btnMenuBox' wx:if='{{dateType != 1}}'>
+      <view class="{{panelIndex == 0 ? 'btnMenuBox_btn_yes yes_color1' : 'btnMenuBox_btn'}}" bindtap='panelBtn' data-num='0'>
+        <text class='icon-title yes_color1 borderNo'></text>面试司机数</view>
+      <view class="{{panelIndex == 1 ? 'btnMenuBox_btn_yes yes_color2' : 'btnMenuBox_btn'}}" bindtap='panelBtn' data-num='1'>
+        <text class='icon-title yes_color2 borderNo'></text>高意向司机数</view>
+      <view class="{{panelIndex == 2 ? 'btnMenuBox_btn_yes yes_color3' : 'btnMenuBox_btn'}}" bindtap='panelBtn' data-num='2'>
+        <text class='icon-title yes_color3 borderNo'></text>成交司机数</view>
+      <view class="{{panelIndex == 3 ? 'btnMenuBox_btn_yes yes_color4' : 'btnMenuBox_btn'}}" bindtap='panelBtn' data-num='3'>
+        <text class='icon-title yes_color4 borderNo'></text>上岗司机数</view>
+    </view>
+    <view class="container marginTop" wx:if='{{dateType != 1}}'>
+      <ec-canvas class='mychart-dom-panel' id="mychart-dom-panel4" canvas-id="mychart-panel" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+      <view wx:if='{{panelSeries}}' class='noData'>暂无数据</view>
+    </view>
+  </view>
+  <!-- <view class="cu-bar bg-white solid-bottom solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 线路标书日报
+    </view>
+  </view> -->
+
+  <!--关键数据指标table-->
+  <!-- <c-table id='c-table2' tableData='{{ tableDatas2 }}'></c-table> -->
+
+  <!--数据概览2-->
+  <view wx:if='{{TabCur == 1}}'>
+    <!--全部城市塞选-->
+    <view class="cu-bar bg-white text-center solid-top">
+      <picker class='citySelect' bindchange="bindPickerChangeTime" value="{{index1}}" range="{{timeArray}}">
+        <view>
+          <text class='icon-title text-blue'></text> {{timeArray[index1]}}
+          <text class="icon-triangledownfill marginLeft"></text>
+        </view>
+      </picker>
+      <picker class='citySelect' bindchange="bindPickerChangeCity2" value="{{index3}}" range="{{cityArray}}">
+        <view>
+          <text class='icon-title text-blue'></text> {{cityArray[index3]}}
+          <text class="icon-triangledownfill marginLeft"></text>
+        </view>
+      </picker>
+    </view>
+    <c-table2 id='c-table2' tableData='{{ tableDatas2 }}'></c-table2>
+  </view>
+
+  <!-- <view class="cu-bar bg-white solid-bottom solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 线路方分类占比
+    </view>
+  </view> -->
+  <!--线路分饼图-->
+  <!-- <view class="container marginTop padding-top50">
+    <ec-canvas class='mychart-dom-pie' id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+  </view>
+
+  <view class="cu-bar bg-white solid-bottom solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 货物类型占比
+    </view>
+  </view> -->
+  <!--货物类型占比-->
+  <!-- <view class='bar_charts_box'>
+    <view class="container marginTop">
+      <ec-canvas class='mychart-dom-bar' id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+    </view>
+  </view>
+
+  <view class="cu-bar bg-white solid-bottom solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 收货人类型占比
+    </view>
+  </view> -->
+
+  <!--收货人类型占比-->
+  <!-- <view class="container marginTop padding-top50">
+    <ec-canvas class='mychart-dom-pie' id="mychart-dom-pie2" canvas-id="mychart-pie" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+  </view>
+
+  <view class="cu-bar bg-white solid-bottom solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 不可用线路分类占比
+    </view>
+  </view> -->
+
+  <!--不可用线路分类占比-->
+  <!-- <view class="container marginTop padding-top50">
+    <ec-canvas class='mychart-dom-pie' id="mychart-dom-pie3" canvas-id="mychart-pie" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+  </view> -->
+</view>

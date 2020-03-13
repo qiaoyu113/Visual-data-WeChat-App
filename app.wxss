@@ -1,6 +1,7 @@
 /**app.wxss**/
 @import "lib/css/iconfont.wxss";
 @import "colorui.wxss";
+@import "miniprogram_npm/vant-weapp/common/index.wxss";
 
 .container {
   height: 100%;
@@ -11,3 +12,9 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+[class*="van-icon-"] {
+  font-family: "vant-icon" !important;
+  font-size: inherit;
+  font-style: normal;
+}

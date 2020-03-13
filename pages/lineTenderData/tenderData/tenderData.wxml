@@ -1,0 +1,224 @@
+<!--pages/dataCenter/tenderData/tenderData.wxml-->
+<view class='tenderData' id='tenderData'>
+  <view class="cu-bar bg-white">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text>  {{title}}
+    </view>
+    <view class='action'>
+      <view class="cu-bar search bg-white">
+        <view class='action fontSize marginRight btnClass' bindtap='selectTime'>
+          <text>{{timeChange}}</text>
+          <van-dialog id="van-dialog"></van-dialog>
+          <text class="icon-all marginLeft"></text>
+        </view>
+        <!-- <view class='action fontSize'>
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{picketArray}}">
+            <view class="picker">
+              {{picketArray[index]}}
+              <text class="icon-triangledownfill marginLeft"></text>
+            </view>
+          </picker>
+        </view> -->
+      </view>
+    </view>
+  </view>
+  <!--时间塞选-->
+  <van-popup show="{{ show }}" position="top" overlay="{{ true }}" safe-area-inset-top='{{ true }}' bind:close="onClose">
+    <cover-view class='selectTimeBox'>
+      <cover-view class='monthBtn' bindtap='yesterday'>日报</cover-view>
+      <picker mode="date" fields="month" end="{{ minDate }}" bindchange="onMonth">
+        <cover-view class='monthBtn'>月报</cover-view>
+      </picker>
+      <cover-view class='monthBtn' bindtap='lastWeek'>上周</cover-view>
+      <!-- <picker mode="date" end="{{ minWeek }}" bindchange="onWeek">
+        <cover-view class='monthBtn'>按周（选择开始日期）</cover-view>
+      </picker> -->
+    </cover-view>
+  </van-popup>
+  <!--生命周期数据指标table-->
+  <c-table2 id='c-table' tableData='{{ tableDatas }}'></c-table2>
+
+  <view class="cu-bar bg-white solid-top text-center">
+    <picker class='citySelect' bindchange="bindPickerChangeCity" value="{{index3}}" range="{{cityArray}}">
+      <view>
+        <text class='icon-title text-blue'></text> {{cityArray[index3]}}
+        <text class="icon-triangledownfill marginLeft"></text>
+      </view>
+    </picker>
+  </view>
+
+  <!-- <view class="cu-bar bg-white solid-bottom solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 线路标书日报
+    </view>
+  </view> -->
+
+  <!--关键数据指标table-->
+  <!-- <c-table id='c-table2' tableData='{{ tableDatas2 }}'></c-table> -->
+
+  <!--全部城市塞选-->
+  <!-- <view class="cu-bar bg-white solid-top text-center">
+    <picker class='citySelect' bindchange="bindPickerChangeCity" value="{{index2}}" range="{{cityArray}}">
+      <view>
+        <text class='icon-title text-blue'></text> {{cityArray[index2]}}
+        <text class="icon-triangledownfill marginLeft"></text>
+      </view>
+    </picker>
+  </view>
+
+  <view class="cu-bar bg-white solid-bottom solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 线路方分类占比
+    </view>
+  </view> -->
+  <!--线路分饼图-->
+  <!-- <view class="container marginTop padding-top50">
+    <ec-canvas class='mychart-dom-pie' id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+  </view>
+
+  <view class="cu-bar bg-white solid-bottom solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 货物类型占比
+    </view>
+  </view> -->
+  <!--货物类型占比-->
+  <!-- <view class='bar_charts_box'>
+    <view class="container marginTop">
+      <ec-canvas class='mychart-dom-bar' id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+    </view>
+  </view>
+
+  <view class="cu-bar bg-white solid-bottom solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 收货人类型占比
+    </view>
+  </view> -->
+
+  <!--收货人类型占比-->
+  <!-- <view class="container marginTop padding-top50">
+    <ec-canvas class='mychart-dom-pie' id="mychart-dom-pie2" canvas-id="mychart-pie" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+  </view>
+
+  <view class="cu-bar bg-white solid-bottom solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 不可用线路分类占比
+    </view>
+  </view> -->
+
+  <!--不可用线路分类占比-->
+  <!-- <view class="container marginTop padding-top50">
+    <ec-canvas class='mychart-dom-pie' id="mychart-dom-pie3" canvas-id="mychart-pie" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+  </view> -->
+
+  <!--货主来源占比-->
+  <!-- <view class="cu-bar bg-white solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 货主来源占比(<span wx:if="{{title == '日报'}}">当前可售线路</span><span wx:if="{{title == '月报'}}">新增线路</span><span wx:if="{{title == '周报'}}">新增线路</span>)
+    </view>
+  </view>
+
+  <view class='bar_charts_box'>
+    <view class="container marginTop">
+      <ec-canvas class='mychart-dom-pie' id="mychart-dom-pie1" canvas-id="mychart-pie1" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+      <view wx:if='{{echartData1}}' class='noData'>暂无数据</view>
+    </view>
+  </view> -->
+
+  <!--货主来源占比-->
+  <!-- <view class="cu-bar bg-white solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 货主来源占比(<span wx:if="{{title == '日报'}}">当前可售线路中精品线路</span><span wx:if="{{title == '月报'}}">新增线路中精品线路</span><span wx:if="{{title == '周报'}}">新增线路中精品线路</span>)
+    </view>
+  </view>
+
+  <view class='bar_charts_box'>
+    <view class="container marginTop">
+      <ec-canvas class='mychart-dom-pie' id="mychart-dom-pie2" canvas-id="mychart-pie2" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+      <view wx:if='{{echartData2}}' class='noData'>暂无数据</view>
+    </view>
+  </view> -->
+
+  <!--货主分类占比-->
+  <view class="cu-bar bg-white solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 货主分类占比(新增线路)
+    </view>
+  </view>
+
+  <view class='bar_charts_box'>
+    <view class="container marginTop">
+      <ec-canvas class='mychart-dom-pie' id="mychart-dom-pie3" canvas-id="mychart-pie3" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+      <view wx:if='{{echartData3}}' class='noData'>暂无数据</view>
+    </view>
+  </view>
+
+  <!--货主自营占比-->
+  <view class="cu-bar bg-white solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 货主自营占比(新增线路)
+    </view>
+  </view>
+
+  <view class='bar_charts_box'>
+    <view class="container marginTop">
+      <ec-canvas class='mychart-dom-pie' id="mychart-dom-pie4" canvas-id="mychart-pie4" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+      <view wx:if='{{echartData4}}' class='noData'>暂无数据</view>
+    </view>
+  </view>
+
+  <!--货主承运占比-->
+  <view class="cu-bar bg-white solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 外包承运占比(新增线路)
+    </view>
+  </view>
+
+  <view class='bar_charts_box'>
+    <view class="container marginTop">
+      <ec-canvas class='mychart-dom-pie' id="mychart-dom-pie5" canvas-id="mychart-pie5" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+      <view wx:if='{{echartData5}}' class='noData'>暂无数据</view>
+    </view>
+  </view>
+
+  <!--货主分类占比-->
+  <view class="cu-bar bg-white solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 货主分类占比(当前可售线路中优质线路)
+    </view>
+  </view>
+
+  <view class='bar_charts_box'>
+    <view class="container marginTop">
+      <ec-canvas class='mychart-dom-pie' id="mychart-dom-pie6" canvas-id="mychart-pie6" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+      <view wx:if='{{echartData6}}' class='noData'>暂无数据</view>
+    </view>
+  </view>
+
+  <!--货主自营占比-->
+  <view class="cu-bar bg-white solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 货主自营占比(当前可售线路中优质线路)
+    </view>
+  </view>
+
+  <view class='bar_charts_box'>
+    <view class="container marginTop">
+      <ec-canvas class='mychart-dom-pie' id="mychart-dom-pie7" canvas-id="mychart-pie7" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+      <view wx:if='{{echartData7}}' class='noData'>暂无数据</view>
+    </view>
+  </view>
+
+  <!--外包承运占比-->
+  <view class="cu-bar bg-white solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 外包承运占比(当前可售线路中精品线路)
+    </view>
+  </view>
+
+  <view class='bar_charts_box'>
+    <view class="container marginTop">
+      <ec-canvas class='mychart-dom-pie' id="mychart-dom-pie8" canvas-id="mychart-pie8" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+      <view wx:if='{{echartData8}}' class='noData'>暂无数据</view>
+    </view>
+  </view>
+</view>

@@ -3,16 +3,23 @@
   <view bindtap='showHints'>提示点击</view>
   <hint id='hint'
         warnText='{{warnTexts}}'
-        icon='success'
+        icon='waiting'
         size='20'></hint>
-      
+
 <!--弹窗-->
   <view bindtap='popup'>弹窗点击</view>
   <popup id='popup'
          ></popup>
 
 <!--ui框架-->
-
+<view class="cu-custom" style="height:{{CustomBar}}px;">
+  <view class="cu-bar fixed bg-gradual-pink" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
+      <text class='icon-back'></text>
+      时间轴
+    </navigator>
+  </view>
+</view>
 <view class="cu-timeline">
   <view class="cu-time">昨天</view>
   <view class='cu-item cur icon-noticefill'>

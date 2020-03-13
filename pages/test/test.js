@@ -1,11 +1,15 @@
 // pages/index/index.js
+const app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    warnTexts: '测试'
+    warnTexts: '测试',
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar
   },
 
   /**

@@ -1,5 +1,14 @@
 import { VantComponent } from '../common/component';
-import { iphonex } from '../mixins/iphonex';
 VantComponent({
-  mixins: [iphonex]
+    relation: {
+        type: 'descendant',
+        name: 'goods-action-button',
+        current: 'goods-action',
+    },
+    props: {
+        safeAreaInsetBottom: {
+            type: Boolean,
+            value: true
+        }
+    }
 });

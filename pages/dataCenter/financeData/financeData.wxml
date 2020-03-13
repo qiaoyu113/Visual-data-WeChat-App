@@ -1,0 +1,78 @@
+<view class='driverData' id='driverData'>
+  <view class="cu-bar bg-white text-center">
+    <picker class='citySelect' bindchange="bindPickerChangeTime" value="{{index1}}" range="{{timeArray}}">
+      <view>
+        <text class='icon-title text-blue'></text> {{timeArray[index1]}}
+        <text class="icon-triangledownfill marginLeft"></text>
+      </view>
+    </picker>
+    <picker class='citySelect' bindchange="bindPickerChangeChannel" value="{{index2}}" range="{{channelArray}}">
+      <view>
+        <text class='icon-title text-blue'></text> {{channelArray[index2]}}
+        <text class="icon-triangledownfill marginLeft"></text>
+      </view>
+    </picker>
+    <picker class='citySelect' bindchange="bindPickerChangeCity" value="{{index3}}" range="{{cityArray}}">
+      <view>
+        <text class='icon-title text-blue'></text> {{cityArray[index3]}}
+        <text class="icon-triangledownfill marginLeft"></text>
+      </view>
+    </picker>
+  </view>
+
+  <!--转化漏斗-->
+  <view class="cu-bar bg-white solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 线索转化漏斗
+    </view>
+  </view>
+
+  <view class='bar_charts_box'>
+    <view class="container marginTop">
+      <ec-canvas class='mychart-dom-panel' id="mychart-dom-panel" canvas-id="mychart-panel" ec="{{ ec }}"></ec-canvas>
+      <view wx:if='{{echartData}}' class='noData'>暂无数据</view>
+    </view>
+    <view class='transBox' wx:if='{{!echartData}}'>
+      <view class='data-trans'>
+        <text class="text">线索</text> ->
+        <text class="text">面试</text> （ 转化率：{{ transNum1 }}% ）
+      </view>
+      <view class='data-trans'>
+        <text class="text">面试</text> ->
+        <text class="text">成交</text> （ 转化率：{{ transNum2 }}% ）
+      </view>
+      <view class='data-trans'>
+        <text class="text">成交</text> ->
+        <text class="text">上岗</text> （ 转化率：{{ transNum3 }}% ）
+      </view>
+      <view class='data-trans'>
+        <text class="text">线索</text> ->
+        <text class="text">成交</text> （ 转化率：{{ transNum4 }}% ）
+      </view>
+    </view>
+  </view>
+
+  <!--转化漏斗-->
+  <view class="cu-bar bg-white solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 面试转化漏斗
+    </view>
+  </view>
+
+  <view class='bar_charts_box'>
+    <view class="container marginTop">
+      <ec-canvas class='mychart-dom-panel' id="mychart-dom-panel2" canvas-id="mychart-panel2" ec="{{ ec }}"></ec-canvas>
+      <view wx:if='{{echartData2}}' class='noData'>暂无数据</view>
+    </view>
+    <view class='transBox' wx:if='{{!echartData2}}'>
+      <view class='data-trans'>
+        <text class="text">面试</text> ->
+        <text>成交</text> （ 转化率：{{ transNum5 }}% ）
+      </view>
+      <view class='data-trans'>
+        <text class="text">成交</text> ->
+        <text class="text">上岗</text> （ 转化率：{{ transNum6 }}% ）
+      </view>
+    </view>
+  </view>
+</view>

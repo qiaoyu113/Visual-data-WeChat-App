@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "tender": "../tenderData/tenderData",
+    "imageData": "../imageData/imageData"
+  },
+  "enablePullDownRefresh": true
+}

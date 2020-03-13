@@ -1,0 +1,18 @@
+<view class='login'>
+  <view class='top'>
+    <image class='logo' src='../../lib/image/logo.png'></image>
+    <view class='name'>梧桐鹰眼</view>
+  </view>
+  <view class='admin'>
+    <text class="icon-profile marginLeft"></text>
+    <input class='input' value="{{name}}" placeholder-class="phcolor" type='text' placeholder='用户名' bindinput="phoneInput"></input>
+  </view>
+  <view class='admin'>
+    <text class="icon-lock marginLeft"></text>
+    <input class='input' value="{{password}}" type='password' placeholder-class="phcolor" placeholder='密码'  bindinput="phoneInput2"></input>
+  </view>
+  <view class='btn' bindtap='login'>登陆</view>
+  <!--警告弹窗-->
+  <van-notify id="van-notify" />
+  <!-- <view class="warning" wx:if="{{warning}}">{{warnText}}</view> -->
+</view>

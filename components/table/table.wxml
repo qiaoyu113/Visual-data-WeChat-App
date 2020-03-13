@@ -1,0 +1,36 @@
+<wxs src='../../filter/commonFilter.wxs' module='filter' />
+<view class='table'>
+  <view class="section section_gap">
+    <view class='fixed-list {{showFixedLeft?"show":""}}' style="width: {{fixedList[0].width}}px;">
+      <view class='fixed-list-item content c-th table-top'>{{filter.tableNameFilter(columns[0])}}</view>
+      <scroll-view class='fixedListContent' scroll-y scroll-top="{{fixedListTop}}">
+        <view class='fixed-list-item content' wx:for="{{fixedList}}" wx:for-index="idx" wx:key="{{idx}}" style="height: {{item.height}}px">{{filter.tableNameFilter(item.data)}}</view>
+      </scroll-view>
+      <!-- <view class='fixed-list-item content c-th table-total'>合计/平均</view> -->
+    </view>
+    <scroll-view class="table" scroll-x bindscroll="showFixList">
+      <view>
+        <view class="thead table-top" style='width: {{bodyWidth + 20}}px'>
+          <view class='th' wx:for="{{columnInfo}}" wx:key="{{idx}}" wx:for-index="idx">
+            <view class='content' style="width: {{item}}px">{{filter.tableNameFilter(idx)}}</view>
+          </view>
+        </view>
+        <scroll-view id='table-body' class='table-body' style='width: {{bodyWidth + 20}}px' scroll-y bindscroll="setFixedListPosition" bindscrolltolower="loadMore">
+          <view class="body">
+            <view class='tr' wx:for="{{datas}}" wx:for-item="rows" wx:for-index="idx" wx:key="{{idx}}">
+              <view class='td {{key}}' wx:for="{{rows}}" wx:for-item="col" wx:for-index="key" wx:key="{{col}}">
+                <view class='content' style="width: {{columnInfo[key]}}px">{{filter.tableNameFilter(col)}}</view>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </scroll-view>
+    <view class='table_load' wx:if='{{loading}}'>
+      <view class='icon'>
+        <van-loading />
+      </view>
+    </view>
+  </view>
+  <view class='noMore' wx:if='{{noMore}}'>暂无数据</view>
+</view>

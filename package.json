@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "vant-weapp": "^0.5.4"
+    "vant-weapp": "^0.5.4",
+    "wux-weapp": "^3.5.0"
   }
 }

@@ -20,6 +20,8 @@
       <text class='icon-fork'></text> Fork</view>
   </view>
 </view>
+
+<c-table></c-table>
 <!-- <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg">
   <view class="cu-item arrow">
     <view class='content' bindtap='CopyLink' data-link='https://github.com/weilanwl/ColorUI'>

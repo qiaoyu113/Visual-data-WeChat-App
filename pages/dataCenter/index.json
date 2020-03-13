@@ -1,0 +1,8 @@
+{
+  "usingComponents":{
+    "tender":"../tenderData/tenderData",
+    "driver":"../driverData/driverData",
+    "finance":"../financeData/financeData"
+  },
+  "enablePullDownRefresh": true
+}

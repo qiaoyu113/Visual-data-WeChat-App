@@ -1,40 +1,46 @@
 {
   "pages": [
-    "pages/myCenter/myCenter",
-    "pages/component/component",
+    "pages/dataCenter/index",
+    "pages/login/login",
     "pages/index/index",
-    "pages/home/home"
+    "pages/myCenter/myCenter",
+    "pages/test/test",
+    "pages/home/home",
+    "pages/dataCenter/tenderData/tenderData",
+    "components/table/table",
+    "pages/dataCenter/driverData/driverData",
+    "pages/dataCenter/financeData/financeData",
+    "pages/lineTenderData/index",
+    "pages/lineTenderData/tenderData/tenderData",
+    "pages/lineTenderData/imageData/imageData",
+    "pages/orderCenter/orderData/orderData",
+    "pages/orderCenter/index"
   ],
-  "components": {
+  "usingComponents": {
     "component-log": "components/logs/logs",
     "hint": "components/hint/hint",
-    "popup": "components/popup/popup"
+    "popup": "components/popup/popup",
+    "van-tab": "miniprogram_npm/vant-weapp/tab/index",
+    "van-icon": "miniprogram_npm/vant-weapp/icon/index",
+    "ec-canvas": "../../ec-canvas/ec-canvas",
+    "c-table": "components/table/table",
+    "c-table2": "components/table2/table2",
+    "menu": "components/menu/menu",
+    "van-loading": "miniprogram_npm/vant-weapp/loading/index",
+    "van-tabs": "miniprogram_npm/vant-weapp/tabs/index",
+    "van-popup": "miniprogram_npm/vant-weapp/popup/index",
+    "van-dialog": "miniprogram_npm/vant-weapp/dialog/index",
+    "van-notify": "miniprogram_npm/vant-weapp/notify/index",
+    "van-datetime-picker": "miniprogram_npm/vant-weapp/datetime-picker/index"
   },
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black",
+    "navigationStyle": "default",
+    "navigationBarBackgroundColor": "#008AE0",
+    "navigationBarTitleText": "梧桐鹰眼",
+    "navigationBarTextStyle": "white",
     "backgroundColor": "#ffffff",
     "enablePullDownRefresh": false
   },
-  "tabBar": {
-    "color": "#333",
-    "selectedColor": "#20A0FF",
-    "borderStyle": "white",
-    "list": [
-      {
-        "selectedIconPath": "lib/image/icon11.png",
-        "iconPath": "lib/image/icon1.png",
-        "pagePath": "pages/home/home",
-        "text": "阅读"
-      },
-      {
-        "selectedIconPath": "lib/image/icon33.png",
-        "iconPath": "lib/image/icon3.png",
-        "pagePath": "pages/myCenter/myCenter",
-        "text": "我的"
-      }
-    ]
-  }
+  "sitemapLocation": "sitemap.json"
 }

@@ -1,0 +1,63 @@
+<!--pages/lineTenderData/imageData/imageData.wxml-->
+<view class='imageData' id='imageData'>
+  <view class="cu-bar bg-white text-center">
+    <!-- <picker class='citySelect' bindchange="bindPickerChangeTime" value="{{index1}}" range="{{timeArray}}"> -->
+    <view class='citySelect' bindtap="selectTime">
+      <text class='icon-title text-blue'></text> {{timeArray[index1]}}
+      <text class="icon-triangledownfill marginLeft"></text>
+    </view>
+    <!-- </picker> -->
+    <picker class='citySelect' bindchange="bindPickerChangeCity" value="{{index3}}" range="{{cityArray}}">
+      <view>
+        <text class='icon-title text-blue'></text> {{cityArray[index3]}}
+        <text class="icon-triangledownfill marginLeft"></text>
+      </view>
+    </picker>
+  </view>
+
+  <!--时间塞选-->
+  <van-popup show="{{ show }}" position="top" overlay="{{ true }}" safe-area-inset-top='{{ true }}' bind:close="onClose">
+    <cover-view class='selectTimeBox'>
+      <view class='selectTimeList' wx:for='{{array1}}' wx:key='{{item.code}}'>
+        <cover-view wx:if="{{item.codeVal != '6'}}" class='monthBtn' bindtap='bindPickerChangeTime' data-id="{{item.codeVal}}">{{item.code}}</cover-view>
+        <picker wx:else mode="date" fields="month" end="{{ minDate }}" bindchange="onMonth" data-id="{{item.codeVal}}">
+          <cover-view class='monthBtn'>{{item.code}}</cover-view>
+        </picker>
+      </view>
+    </cover-view>
+  </van-popup>
+
+  <!--新增列表-->
+  <view class='listBox'>
+    <view class='list'>
+      <view class='val'>{{header.monthlyGrossIncome}}</view>
+      <view class='name'>平均月均毛收入(元)</view>
+    </view>
+    <view class='list'>
+      <view class='val'>{{header.averageMonthlyNetIncomeFromOilRemoval}}</view>
+      <view class='name'>平均去油月均净收入(元)</view>
+    </view>
+    <view class='list'>
+      <view class='val'>{{header.averageRefuelingSettlementRatio}}</view>
+      <view class='name'>平均加油结算占比</view>
+    </view>
+    <view class='list'>
+      <view class='val'>{{header.averageBillingCycle}}</view>
+      <view class='name'>平均结算周期(天)</view>
+    </view>
+  </view>
+
+  <!--货主来源占比-->
+  <view class="cu-bar bg-white solid-top">
+    <view class='action text-black'>
+      <text class='icon-title text-cyan'></text> 线路各级别占比
+    </view>
+  </view>
+
+  <view class='bar_charts_box'>
+    <view class="container marginTop">
+      <ec-canvas class='mychart-dom-pie' id="mychart-dom-pie1" canvas-id="mychart-pie1" ec="{{ ec }}" bind:init="echartInit"></ec-canvas>
+      <view wx:if='{{echartData1}}' class='noData'>暂无数据</view>
+    </view>
+  </view>
+</view>

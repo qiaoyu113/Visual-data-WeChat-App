@@ -1,0 +1,102 @@
+/* pages/login/login.wxss */
+
+page {
+  height: 100%;
+}
+
+.login {
+  width: 100%;
+  height: 100%;
+  background: #303d52;
+}
+
+.top {
+  width: 100%;
+  text-align: center;
+  padding: 150rpx 0;
+  box-sizing: border-box;
+}
+
+.name {
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: 500;
+}
+
+.logo {
+  width: 200rpx;
+  height: 200rpx;
+  margin: auto;
+}
+
+.admin {
+  margin: 30rpx 100rpx;
+  height:80rpx;
+  box-sizing: border-box;
+  border-bottom: 2rpx solid #fff;
+  overflow: hidden;
+}
+
+.admin text {
+  float: left;
+  color: #fff;
+  font-size:34rpx;
+  margin-top: 20rpx;
+}
+
+.admin .input {
+  height: 100%;
+  float: left;
+  margin-left: 20rpx;
+  color: #fff;
+}
+
+.phcolor {
+  color: #fff;
+}
+
+.btn{
+  width:550rpx;
+  margin: auto;
+  margin-top:130rpx;
+  text-align: center;
+  color:#fff;
+  font-size:16px;
+  font-weight: bold;
+  height:100rpx;
+  line-height:100rpx;
+  border-radius: 12rpx;
+  background-image: linear-gradient(45deg, #6FC2B9, #50B2CD);
+}
+
+.warning {
+  width: 90%;
+  padding: 30rpx 20rpx;
+  text-align: center;
+  box-sizing: border-box;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: #333;
+  opacity: 0.9;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 6px;
+  animation: warnAni 0.3s forwards;
+  z-index: 300;
+}
+
+@keyframes warnAni {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}

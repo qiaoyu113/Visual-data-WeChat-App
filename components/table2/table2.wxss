@@ -1,0 +1,143 @@
+/* 基础样式, 勿动 */
+
+/* 侧边栏相关 */
+
+.table {
+  width: 100%;
+}
+
+.table-top {
+  background: #ecf0f4 !important;
+  color: #40464a !important;
+}
+
+.table-bottom{
+  background: #ecf0f4;
+}
+
+.section_gap {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 2rpx solid #ecf0f4
+}
+
+.section_gap .fixed-list {
+  position: absolute;
+  left: 0;
+  z-index: 999;
+  background-color: #fff;
+  border-right: 1rpx solid #eee;
+  box-shadow: 0 3px 3px #ccc;
+  display: none;
+}
+
+.section_gap .fixed-list.show {
+  display: block;
+}
+
+.fixedListContent {
+  /* height: 200px; */
+  white-space: word-break;
+  text-align: center;
+}
+
+.section_gap .fixed-list .content {
+  /* border-bottom: 1px solid #eee; *//* padding-right: 10px; */
+  text-align: center;
+  color: #666;
+}
+
+.section_gap .fixed-list .content:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+/* 表格 */
+
+.table {
+  /* border-top: 1px solid #eee; *//* border-left: 1px solid #eee; *//* width: 750rpx; */
+}
+
+.table-body {
+  /* height: 200px; */
+  overflow: hidden;
+}
+
+.thead {
+  /* box-shadow: 0 3px 3px #ccc; */
+  color: #40464a;
+}
+
+.body {
+  display: block;
+}
+
+.tr {
+  text-align: center;
+  color: #666;
+  white-space: nowrap;
+}
+
+.tr:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+.th {
+  text-align: center;
+  color: #40464a;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.td {
+  white-space: word-break;
+}
+
+.td, .th {
+  /* border-right: 1px solid #eee; */
+  display: table-cell;
+}
+
+.content {
+  box-sizing: border-box;
+  padding: 12px 5px;
+  white-space: word-break;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.noMore {
+  width: 100%;
+  height: 300rpx;
+  line-height: 300rpx;
+  text-align: center;
+  background: #f9f9f9 !important;
+  color: #40464a !important;
+  font-size: 13px;
+}
+
+.table_load{
+  position: absolute;
+  top:0;
+  bottom:0;
+  right:0;
+  left:0;
+  margin: auto;
+  background:#40464a;
+  opacity: 0.4;
+  text-align: center;
+  line-height: auto;
+}
+
+.table_load .icon{
+  width:60rpx;
+  height:60rpx;
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  margin: auto;
+}
