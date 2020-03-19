@@ -1,0 +1,63 @@
+<!-- pages/answer/answer.wxml -->
+<view class="answer">
+  <view class="answer-type">
+    <view class="answer-no" wx:if="{{clock.status === -1}}">打分未开始</view>
+    <view class="answer-no" wx:elif="{{clock.status === 3}}">打分已结束</view>
+    <view class="answer-yes" wx:elif="{{clock.status === 1 || clock.status === 2}}">
+      <view class="answer-lt" wx:if="{{clock.status === 1}}">距可提交倒计时：{{time}}秒</view>
+      <view class="answer-lt" wx:else>距结束倒计时：{{time}}秒</view>
+      <view>剩余分数：{{total}}分</view>
+    </view>
+  </view>
+  <view class="answer-tit">
+    <view class="flex answer-tit-item">
+      <view class="flex-1">姓名：{{name}}</view>
+      <view class="flex-1 answer-tit-rt">城市：{{cityName}}</view>
+    </view>
+    <view class="answer-tit-item">职务：{{userInfo.titleName}}</view>
+  </view>
+  <view class="content">
+    <view class="list" wx:for="{{list}}" wx:key="id" wx:for-index="index">
+      <view class="list-top flex">
+        <view class="tip">{{item.deptName}}</view>
+        <view class="text">总分数：{{item.total}}分</view>
+      </view>
+      <view class="list-ct" wx:for="{{item.itemInfoVOList}}" wx:key="index" wx:for-index="i" wx:for-item="row">
+        <van-collapse value="{{activeNames}}" class="coll" bind:change="onOpen">
+          <van-collapse-item name="{{index + '-' + i}}">
+            <view slot="title" class="title">{{row.name}}</view>
+            {{row.desc}}
+          </van-collapse-item>
+        </van-collapse>
+        <view class="slider-ct flex flex-align-center">
+          <view class="left">评分</view>
+          <view class="right flex-1">
+            <input class='input' disabled="{{ disabled }}" value="{{row.score}}" type='digit' bindblur="setIptStorage" bindinput="regInput" data-max='{{row.maxScore}}' data-part="{{index}}" data-index="{{i}}"></input>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="footer">
+    <view class="gray-btn" wx:if="{{clock.status === -1}}">未开始</view>
+    <view class="gray-btn" wx:if="{{clock.status === 3}}">完成</view>
+    <view class="gray-btn" wx:if="{{clock.status === 1}}">请打分</view>
+    <view class="blue-btn" bind:tap="submitFn" wx:if="{{clock.status === 2}}">提交</view>
+  </view>
+  <van-dialog use-slot title="打分原则注意事项" width="600rpx" show="{{ show }}" bind:close="onClose">
+    <scroll-view scroll-y="true" class="dialog-scroll">
+      <view class="dialog-ct">
+        <view class="dialog-list">1，每项赋能可以给小数点后一位的分数，如4.2分</view>
+        <view class="dialog-list">2，没有任何帮助的赋能项可以打零分，但必须要填写。</view>
+        <view class="dialog-list">3，每个评分人的具体打分不会透露，最后公开的是平均分，所以按照真实帮助来评分，不要有人情顾忌。</view>
+        <view class="dialog-list">4，不要看人缘关系好坏，人缘好但实际帮助低，应该打低分或者零分，个人关系不好，但的确有帮助，应该给高分。</view>
+        <view class="dialog-list">5，提高格局看待帮助，比如不少服务天然有约束，检查属性，但如果对业务的确有帮助，应该给高分。不以是否限制了个人空间为帮助的标准，站在更高的格局下看待帮助</view>
+        <view class="dialog-list">6，不以说的好坏为依据，有的人善说，有的人不善说，看实际的帮助大小。</view>
+        <view class="dialog-list">7，打分做到尽量客观公正，谨慎仔细。</view>
+        <view class="dialog-list">8，打分思考针对最近一个月的，不是过去历史。就是刚过去一个月的分数，之前好，本月差，应该低分。之前不好，本月帮助大，应该高分。</view>
+        <view class="dialog-list">9，不得以打分权利，在日常工作中作为讨价还价的手段。比如如果你不这样，我就给你低分，禁止此种行为。</view>
+        <view class="dialog-list">10，必须先好好理解赋能项的定义，不要对赋能项理解错误。</view>
+      </view>
+    </scroll-view>
+  </van-dialog>
+</view>

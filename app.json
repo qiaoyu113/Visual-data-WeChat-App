@@ -14,7 +14,8 @@
     "pages/lineTenderData/tenderData/tenderData",
     "pages/lineTenderData/imageData/imageData",
     "pages/orderCenter/orderData/orderData",
-    "pages/orderCenter/index"
+    "pages/orderCenter/index",
+    "pages/answer/answer"
   ],
   "usingComponents": {
     "component-log": "components/logs/logs",
@@ -31,7 +32,9 @@
     "van-popup": "miniprogram_npm/vant-weapp/popup/index",
     "van-dialog": "miniprogram_npm/vant-weapp/dialog/index",
     "van-notify": "miniprogram_npm/vant-weapp/notify/index",
-    "van-datetime-picker": "miniprogram_npm/vant-weapp/datetime-picker/index"
+    "van-datetime-picker": "miniprogram_npm/vant-weapp/datetime-picker/index",
+    "van-collapse": "miniprogram_npm/vant-weapp/collapse/index",
+    "van-collapse-item": "miniprogram_npm/vant-weapp/collapse-item/index"
   },
   "window": {
     "backgroundTextStyle": "light",

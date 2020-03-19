@@ -72,6 +72,13 @@ Page({
               });
             }
           })
+          // 存储
+          wx.setStorage({
+            key: 'userInfo',
+            data: {
+              ...res.data.userInfoVO
+            }
+          })
           wx.setStorage({
             key: 'token',
             data: res.data.token,
