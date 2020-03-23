@@ -1,5 +1,6 @@
 // pages/answer/answer.js
 var network = require("../../utils/network.js");
+// const util = require('../../utils/util.js')
 
 Page({
 
@@ -39,14 +40,20 @@ Page({
     let subVal = this.getScore(value, part, index)// 计算总分减去输入后的值
     if (value > max || subVal < 0) {
       val = e.detail.value.substring(0, e.detail.value.length - 1);
-    } else if (/^(\d?){0,2}(\.\d{0,1})?$/.test(e.detail.value)) {
+    } else if (/^(\d?){0,3}(\.\d{0,1})?$/.test(e.detail.value)) {
       val = e.detail.value;
     } else {
       val = e.detail.value.substring(0, e.detail.value.length - 1);
     }
-
+    let total = 0;
+    this.data.list[part].itemInfoVOList.forEach((row, j) => {
+      if (index !== j) {
+        total = this.accAdd(total, Number(row.score))
+      }
+    })
     this.setData({
       [`list[${part}].itemInfoVOList[${index}].score`]: val,
+      [`list[${part}].total`]: this.accAdd(total, Number(val)),
       total: this.getScore(val, part, index)
     });
     return val
@@ -71,6 +78,7 @@ Page({
     const score = wx.getStorageSync('score');
     const list = this.data.list;
     list.forEach(item => {
+      let total = 0;
       if (item.itemInfoVOList && item.itemInfoVOList.length > 0) {
         item.itemInfoVOList.forEach((row) => {
           var i = null;
@@ -78,8 +86,10 @@ Page({
             i = score.find(item => item.itemId === row.itemId)
           }
           row.score = i ? i.score : '';
+          total = this.accAdd(total, Number(row.score))
         })
       }
+      item.total = total;
     });
     const total = this.getScore()
     this.setData({
@@ -126,7 +136,7 @@ Page({
             var total = 0;
             if (item.itemInfoVOList && item.itemInfoVOList.length > 0) {
               item.itemInfoVOList.forEach((row) => {
-                total = that.accAdd(total, row.maxScore)
+                // total = that.accAdd(total, row.maxScore)
                 row.score = '';
               })
             }
@@ -182,7 +192,19 @@ Page({
             disabled: data.status !== 1 && data.status !== 2,
             clock: data
           })
-          
+          // 取到当前时间戳，存储下来进行判断弹窗显示与否
+          var day = network.formatTime(data.currentTimeStamp / 1000, 'Y/M/D')
+          var storageDay = wx.getStorageSync('Day')
+
+          if(day !== storageDay){
+            that.setData({
+              show: true
+            })
+            wx.setStorage({
+              key: 'Day',
+              data: day
+            });
+          }
           // 1:CEO已经点击了开始答题按钮，当前考试处于900s倒计时中 2：经过了第一步后，处于300s倒计时状态 3: 已结束 -1: 当月考试未开始状态
           if (data.status === -1) {
             that.data.time1 = setTimeout(() => {
@@ -193,15 +215,11 @@ Page({
             });
           } else if (data.status === 1 || data.status === 2) {
             that.setInptScore();
-            that.setTime(data.currentTimeStamp, data.endTimeStamp)
+            that.setTime(data.currentTimeStamp, data.endTimeStamp);
           } else {
             wx.removeStorage({
               key: 'score'
             });
-            wx.setStorage({
-              key: 'dialog',
-              data: true
-            })
           }
         } else {
           wx.showToast({
@@ -242,12 +260,7 @@ Page({
     n = (r1 >= r2) ? r1 : r2;
     return ((arg1 * m - arg2 * m) / m).toFixed(n);
   },
-  onClose() {
-    wx.setStorage({
-      key: 'dialog',
-      data: true
-    })
-  },
+  onClose() {},
   setTime(start, end) {
     const time = Math.floor((end - start) / 1000)
     this.setData({
@@ -321,10 +334,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const show = wx.getStorageSync('dialog')
-    this.setData({
-      show: !show
-    })
     this.getInfo();
     this.getItemRecords();
   },

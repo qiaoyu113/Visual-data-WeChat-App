@@ -20,20 +20,17 @@
     <view class="list" wx:for="{{list}}" wx:key="id" wx:for-index="index">
       <view class="list-top flex">
         <view class="tip">{{item.deptName}}</view>
-        <view class="text">总分数：{{item.total}}分</view>
+        <view class="text"wx:if="{{item.total}}">总分数：{{item.total}}分</view>
       </view>
-      <view class="list-ct" wx:for="{{item.itemInfoVOList}}" wx:key="index" wx:for-index="i" wx:for-item="row">
-        <van-collapse value="{{activeNames}}" class="coll" bind:change="onOpen">
+      <view class="list-ct flex" wx:for="{{item.itemInfoVOList}}" wx:key="index" wx:for-index="i" wx:for-item="row">
+        <van-collapse value="{{activeNames}}" class="coll flex-1" bind:change="onOpen">
           <van-collapse-item name="{{index + '-' + i}}">
             <view slot="title" class="title">{{row.name}}</view>
             {{row.desc}}
           </van-collapse-item>
         </van-collapse>
         <view class="slider-ct flex flex-align-center">
-          <view class="left">评分</view>
-          <view class="right flex-1">
-            <input class='input' disabled="{{ disabled }}" value="{{row.score}}" type='digit' bindblur="setIptStorage" bindinput="regInput" data-max='{{row.maxScore}}' data-part="{{index}}" data-index="{{i}}"></input>
-          </view>
+          <input class='input' disabled="{{ disabled }}" value="{{row.score}}" type='digit' bindblur="setIptStorage" bindinput="regInput" data-max='{{row.maxScore}}' data-part="{{index}}" data-index="{{i}}"></input>
         </view>
       </view>
     </view>
