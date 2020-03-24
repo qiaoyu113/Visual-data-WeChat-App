@@ -80,3 +80,13 @@
   top: 0;
   background-color: #fafafa;
 }
+.bottom{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 60rpx;
+  font-size: 14px;
+  line-height: 20px;
+  color: #45A2E8;
+  text-align: center;
+}
