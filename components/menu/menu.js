@@ -81,8 +81,12 @@ Component({
       // 判断权限问题
       let that = this;
       let role = ['GMC', 'BGL'];
-      let {roleNames} = wx.getStorageSync('userInfo')
-      let isRole = roleNames.some(item => role.includes(item))
+      let userInfo = wx.getStorageSync('userInfo');
+      if(!userInfo){
+        wx.clearStorageSync();
+        return;
+      }
+      let isRole = userInfo.roleNames.some(item => role.includes(item))
       if(isRole){
         console.log(that.menuList)
 
@@ -94,6 +98,12 @@ Component({
           menuList: that.data.menuList
         })
       }
+    },
+    onLoginout(){
+      wx.clearStorageSync();
+      wx.redirectTo({
+        url: '/pages/login/login'
+      });
     }
   }
 })

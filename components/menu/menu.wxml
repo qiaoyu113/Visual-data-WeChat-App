@@ -13,5 +13,6 @@
     <cover-view class="borderLeft {{ activeKey == index ? 'borderLeft' : 'borderLeftNo'}}"></cover-view>
     {{ item.text }}
   </cover-view>
+  <cover-view class="bottom"  bindtap="onLoginout">退出登陆</cover-view>
 </cover-view>
 <cover-view class="van-overlay" wx:if="{{ show }}" bindtap="onClose"></cover-view>
