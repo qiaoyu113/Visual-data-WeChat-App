@@ -12,6 +12,7 @@
     <input class='input' value="{{password}}" type='password' placeholder-class="phcolor" placeholder='密码'  bindinput="phoneInput2"></input>
   </view>
   <view class='btn' bindtap='login'>登陆</view>
+  <view class="back" bindtap='backBtn'>取消登陆</view>
   <!--警告弹窗-->
   <van-notify id="van-notify" />
   <!-- <view class="warning" wx:if="{{warning}}">{{warnText}}</view> -->

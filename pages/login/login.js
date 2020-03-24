@@ -139,6 +139,14 @@ Page({
     })
   },
 
+  // 取消登陆
+  backBtn() {
+    let that = this;
+    wx.redirectTo({
+      url: '/pages/welcome/welcome',
+    })
+  },
+
   //清除token
   cleanToken() {
     wx.removeStorage({
