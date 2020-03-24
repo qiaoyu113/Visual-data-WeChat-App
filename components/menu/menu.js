@@ -35,7 +35,9 @@ Component({
       }
     ]
   },
-
+  created(){
+    
+  },
   ready() {
     let that = this
     var pages = getCurrentPages() //获取加载的页面
@@ -47,6 +49,7 @@ Component({
     that.setData({
       activeKey: app.globalData.menuActiveKey
     })
+    this.setRole();
   },
 
   /**
@@ -74,5 +77,23 @@ Component({
         url: path,
       })
     },
+    setRole(){
+      // 判断权限问题
+      let that = this;
+      let role = ['GMC', 'BGL'];
+      let {roleNames} = wx.getStorageSync('userInfo')
+      let isRole = roleNames.some(item => role.includes(item))
+      if(isRole){
+        console.log(that.menuList)
+
+        that.data.menuList.push({
+          "pagePath": "../../pages/answer/answer",
+          "text": "鹰眼评分"
+        })
+        this.setData({
+          menuList: that.data.menuList
+        })
+      }
+    }
   }
 })
