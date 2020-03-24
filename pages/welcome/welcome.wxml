@@ -1,0 +1,5 @@
+<view class="welcome">
+  <view class="title">欢迎来到梧桐鹰眼</view>
+  <button wx:if='{{ !hasToken}}' open-type="getUserInfo" class="nowEnter" bindgetuserinfo="goHome" data-type="1">立即进入</button>
+  <button wx:if='{{ hasToken}}' class="nowEnter" bindtap="goHome" data-type="2">立即进入</button>
+</view>

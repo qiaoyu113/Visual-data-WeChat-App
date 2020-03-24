@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/welcome/welcome",
     "pages/dataCenter/index",
     "pages/login/login",
     "pages/index/index",

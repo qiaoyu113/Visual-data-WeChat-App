@@ -1,0 +1,20 @@
+/* pages/welcome/welcome.wxss */
+page{
+  background:#303d52;
+  padding: 20rpx 40rpx;
+  box-sizing: border-box;
+}
+.title{
+  width:100%;
+  text-align: center;
+  color:#fff;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top:30%;
+}
+
+.nowEnter{
+  width: 80%;
+  margin: auto;
+  margin-top:70%;
+}
