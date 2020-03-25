@@ -30,14 +30,11 @@ Page({
 
   goHome(options) {
     let type = options.currentTarget.dataset.type;
+    // console.log('type',type)
     if (type == 1) {
-      wx.getUserInfo({
-        success: function(res) {
-          wx.redirectTo({
-            url: '../login/login'
-          });
-        }
-      })
+      wx.redirectTo({
+        url: '../login/login'
+      });
     } else {
       wx.redirectTo({
         url: '../dataCenter/index'

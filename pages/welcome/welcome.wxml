@@ -4,6 +4,6 @@
   <view class="context">
     <text>亲爱的云鸟人您好，本系统为企业内部员工使用。如需使用并查看应用内部程序，需通过管理员开通账号进行登陆。感谢您的使用。</text>
   </view>
-  <button wx:if='{{ !hasToken}}' open-type="getUserInfo" class="nowEnter" bindgetuserinfo="goHome" data-type="1">立即登陆</button>
+  <button wx:if='{{ !hasToken}}' class="nowEnter" bindtap="goHome" data-type="1">立即登陆</button>
   <button wx:if='{{ hasToken}}' class="nowEnter" bindtap="goHome" data-type="2">立即进入</button>
 </view>
