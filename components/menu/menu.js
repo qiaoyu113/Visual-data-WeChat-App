@@ -92,7 +92,7 @@ Component({
 
         that.data.menuList.push({
           "pagePath": "../../pages/answer/answer",
-          "text": "鹰眼评分"
+          "text": "赋能打分"
         })
         this.setData({
           menuList: that.data.menuList
