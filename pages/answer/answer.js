@@ -210,16 +210,16 @@ Page({
             that.data.time1 = setTimeout(() => {
               that.getStatus()
             }, 5000)
-            wx.removeStorage({
-              key: 'score'
-            });
+            // wx.removeStorage({
+            //   key: 'score'
+            // });
           } else if (data.status === 1 || data.status === 2) {
             that.setInptScore();
             that.setTime(data.currentTimeStamp, data.endTimeStamp);
           } else {
-            wx.removeStorage({
-              key: 'score'
-            });
+            // wx.removeStorage({
+            //   key: 'score'
+            // });
           }
         } else {
           wx.showToast({
